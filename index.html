@@ -109,9 +109,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px">
       <sc-for list="{{ visProjects }}" as="p" hint-placeholder-count="6">
         <article style="display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--line);background:var(--bg);overflow:hidden">
-          <div style="aspect-ratio:16/9;background:var(--accent-soft)">
-            <image-slot id="shot-{{ p.id }}" shape="rect" fit="contain" placeholder="Project screenshot" style="width:100%;height:100%"></image-slot>
-          </div>
+          <sc-if value="{{ p.hasShot }}" hint-placeholder-val="{{ true }}">
+            <div style="aspect-ratio:16/9;background:var(--accent-soft)">
+              <image-slot id="shot-{{ p.id }}" shape="rect" fit="contain" placeholder="Project screenshot" style="width:100%;height:100%"></image-slot>
+            </div>
+          </sc-if>
           <button onClick="{{ p.open }}" style="display:flex;flex-direction:column;gap:12px;flex:1;padding:22px 22px 20px;border:0;background:transparent;text-align:left;font:inherit;color:inherit;cursor:pointer" style-hover="background:var(--accent-soft)">
             <div style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent-text)">
               <span>{{ p.cat }}</span>
@@ -444,7 +446,7 @@ class Component extends DCLogic {
       approach: ['Collected, processed, and modeled Arabic and Braille datasets to improve translation accuracy.', 'Developed a deep learning-based system that translates in both directions: Arabic to Braille and Braille to Arabic.'],
       outcome: 'Supports Arabic reading material translation for visually impaired users.',
       stack: ['Python', 'Deep Learning', 'NLP'] },
-    { id: 'savola-bi', f: 'bi', cat: 'Business Intelligence', title: 'Logistics Performance Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
+    { id: 'savola-bi', f: 'bi', noShot: true, cat: 'Business Intelligence', title: 'Logistics Performance Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
       summary: 'A master Power BI dashboard and data model for oil shipments, delays, and logistics performance.',
       challenge: 'Logistics stakeholders needed one reliable view of shipments, delays and performance over time.',
       approach: ['Translated stakeholders’ requirements into dashboard specifications.', 'Designed a master data model covering 3+ years of historical shipment data.'],
@@ -581,7 +583,7 @@ class Component extends DCLogic {
     const chip = on => ({ border: on ? 'var(--accent)' : 'var(--line)', bg: on ? 'var(--accent)' : 'transparent', color: on ? 'var(--on-accent)' : 'var(--ink)' });
 
     const pFilters = [['all', 'All'], ['ai', 'AI & ML'], ['bi', 'BI & Apps'], ['de', 'Data Engineering']].map(([k, label]) => ({ label, ...chip(st.pf === k), pick: () => this.setState({ pf: k }) }));
-    const visProjects = this.projects.filter(p => st.pf === 'all' || p.f === st.pf).map(p => ({ ...p, hasAward: !!p.award, stack3: p.stack.slice(0, 3), open: open(p.id) }));
+    const visProjects = this.projects.filter(p => st.pf === 'all' || p.f === st.pf).map(p => ({ ...p, hasShot: !p.noShot, hasAward: !!p.award, stack3: p.stack.slice(0, 3), open: open(p.id) }));
     const apRaw = projById(st.active);
 
     const skGroups = this.skillCats.map(c => {
