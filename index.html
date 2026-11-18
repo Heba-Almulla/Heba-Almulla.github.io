@@ -446,7 +446,7 @@ class Component extends DCLogic {
       approach: ['Collected, processed, and modeled Arabic and Braille datasets to improve translation accuracy.', 'Developed a deep learning-based system that translates in both directions: Arabic to Braille and Braille to Arabic.'],
       outcome: 'Supports Arabic reading material translation for visually impaired users.',
       stack: ['Python', 'Deep Learning', 'NLP'] },
-    { id: 'savola-bi', f: 'bi', noShot: true, cat: 'Business Intelligence', title: 'Logistics Performance Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
+    { id: 'savola-bi', f: 'bi', cat: 'Business Intelligence', title: 'Logistics Performance Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
       summary: 'A master Power BI dashboard and data model for oil shipments, delays, and logistics performance.',
       challenge: 'Logistics stakeholders needed one reliable view of shipments, delays and performance over time.',
       approach: ['Translated stakeholders’ requirements into dashboard specifications.', 'Designed a master data model covering 3+ years of historical shipment data.'],
@@ -458,6 +458,12 @@ class Component extends DCLogic {
       approach: ['Built a Power Apps application that centralizes inbound logistics requests and tracking in one place.', 'Connected it to live data so every user always sees the latest information, with no manual updates needed.'],
       outcome: 'Replaced manual spreadsheets and repetitive email updates with one centralized, automated system used by 4 departments and additional individual users.',
       stack: ['Power Apps', 'Excel'] },
+    { id: 'savola-cert', f: 'bi', cat: 'Business Intelligence', title: 'Certificates Validity Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
+      summary: 'A monitoring dashboard that tracks which certificates need to be issued or renewed, and alerts the team before any of them expire.',
+      challenge: 'The Inbound Logistics department has to keep many certificates valid. Spotting the ones about to expire, and giving management an update on renewals, depended on asking people directly.',
+      approach: ['Built a dashboard that tracks every certificate the department needs to issue or renew, with its expiry date and current status.', 'Added alerts that flag certificates close to expiry, so the team can update them in time.'],
+      outcome: 'The team catches expiring certificates before they lapse, and top management can follow renewal progress at any time without needing to ask anyone.',
+      stack: ['Power BI', 'Data modeling'] },
     { id: 'emaar-kpi', f: 'bi', cat: 'Business Intelligence', title: 'Strategic KPI Dashboards', org: 'Emaar · KAEC', date: '06/2024 – 08/2024', role: 'BI & Analytics Intern',
       summary: 'Power BI dashboards to monitor key performance indicators and strategic initiatives.',
       challenge: 'Teams needed a clear, current view of KPIs and strategic initiatives.',
@@ -491,7 +497,7 @@ class Component extends DCLogic {
     { cat: 'de', name: 'Apache Hadoop', what: 'A framework for storing and processing very large datasets across many machines.', how: 'Managed and monitored Hadoop in a Linux environment at Emaar.', p: ['kaec'], c: [] },
     { cat: 'de', name: 'Apache NiFi', what: 'A tool for designing and automating data flows between systems.', how: 'Set up and evaluated NiFi for future pipeline integration.', p: ['kaec'], c: [] },
     { cat: 'de', name: 'Linux', what: 'The open-source operating system that runs most data infrastructure.', how: 'Operated Hadoop on Linux-based servers.', p: ['kaec'], c: [] },
-    { cat: 'bi', name: 'Power BI', what: 'Microsoft’s platform for interactive dashboards and business reports.', how: 'Built KPI and logistics dashboards at Emaar and Savola.', p: ['savola-bi', 'emaar-kpi'], c: [] },
+    { cat: 'bi', name: 'Power BI', what: 'Microsoft’s platform for interactive dashboards and business reports.', how: 'Built KPI, logistics and certificate-monitoring dashboards at Emaar and Savola.', p: ['savola-bi', 'savola-cert', 'emaar-kpi'], c: [] },
     { cat: 'bi', name: 'DAX', what: 'The formula language for calculations and measures inside Power BI.', how: 'Writing measures that drive dashboard KPIs.', p: [], c: ['Introduction to DAX in Power BI'] },
     { cat: 'bi', name: 'Power Apps', what: 'Microsoft’s low-code platform for building business applications.', how: 'Built Savola’s inbound logistics portal, used across 4 departments.', p: ['savola-app'], c: [] },
     { cat: 'bi', name: 'Tableau', what: 'A visual analytics platform for exploring and presenting data.', how: 'Exploring and visualizing datasets.', p: [], c: [] },
@@ -514,7 +520,7 @@ class Component extends DCLogic {
     { id: 'savola', step: '03', type: 'Work experience', years: '2025 – 2026', title: 'Business Intelligence Specialist', org: 'Savola Foods · Tamheer Program', loc: 'Jeddah', date: '11/2025 – 05/2026',
       story: 'Through the Tamheer program I joined the Inbound Logistics team, and this is where my work turned into tools people relied on every day. I replaced the team’s spreadsheet-and-email routine with one centralized Power Apps system, and built a master Power BI dashboard on 3+ years of shipment history to show where delays happen and why.',
       highlight: 'One automated system now used by 4 departments and additional individual users',
-      skills: ['Power BI', 'Power Apps', 'Data Modeling', 'Excel'], p: ['savola-bi', 'savola-app'] }
+      skills: ['Power BI', 'Power Apps', 'Data Modeling', 'Excel'], p: ['savola-bi', 'savola-cert', 'savola-app'] }
   ];
 
   certCats = [{ key: 'ai', label: 'AI & ML' }, { key: 'data', label: 'SQL & Data' }, { key: 'bi', label: 'Power BI' }, { key: 'cloud', label: 'Cloud' }, { key: 'pro', label: 'Industry Training' }];
