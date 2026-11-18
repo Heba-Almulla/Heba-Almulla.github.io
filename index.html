@@ -131,6 +131,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
               <span>{{ p.org }}</span><span style="font-weight:600;color:var(--accent-text)">Read case study →</span>
             </div>
           </button>
+          <sc-if value="{{ p.hasRepo }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ p.repo }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;margin:0 22px 20px;padding:9px 14px;border-radius:var(--r);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600" style-hover="border-color:var(--accent)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>View code on GitHub<span style="margin-left:auto;color:var(--accent-text)">↗</span></a>
+          </sc-if>
         </article>
       </sc-for>
     </div>
@@ -365,6 +368,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
         <div style="display:flex;flex-wrap:wrap;gap:6px">
           <sc-for list="{{ ap.stack }}" as="s" hint-placeholder-count="3"><span style="padding:4px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent-text);font-size:13px;font-weight:500">{{ s }}</span></sc-for>
         </div>
+        <sc-if value="{{ ap.hasRepo }}" hint-placeholder-val="{{ false }}">
+          <div><a href="{{ ap.repo }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600" style-hover="filter:brightness(1.08)">View code on GitHub ↗</a></div>
+        </sc-if>
       </div>
     </div>
   </div>
@@ -479,7 +485,7 @@ class Component extends DCLogic {
       approach: ['Managed and monitored Apache Hadoop for distributed data storage in a Linux-based environment.', 'Set up and evaluated Apache NiFi for future data pipeline integration.'],
       outcome: 'A working storage layer and an evaluated path for future pipeline integration.',
       stack: ['Apache Hadoop', 'Apache NiFi', 'Linux'] },
-    { id: 'marketing', f: 'bi', cat: 'Data Analysis · Sentiment', title: 'Marketing Analysis', org: 'Personal project', date: '', role: 'Self-learning project',
+    { id: 'marketing', f: 'bi', repo: 'https://github.com/Heba-Almulla/Marketing-Analysis-Portfolio', cat: 'Data Analysis · Sentiment', title: 'Marketing Analysis', org: 'Personal project', date: '', role: 'Self-learning project',
       summary: 'An end-to-end marketing analysis that uses SQL, Python and Power BI to turn campaign, engagement and review data into business insights.',
       challenge: 'A business wants to know which products convert, how customers engage with its content, and what they really think in their reviews, but the data is raw, messy and spread across separate tables.',
       approach: ['Cleaned and enriched the data in SQL Server: categorized products by price, added geography and age segments to customers, removed duplicate reviews and filled missing values.', 'Ran sentiment analysis on customer reviews in Python with VADER, then categorized each review by sentiment score and rating.', 'Built three Power BI dashboards: Marketing Overview, Conversion & Campaign Performance, and Customer Feedback Insights.'],
@@ -605,7 +611,7 @@ class Component extends DCLogic {
     const chip = on => ({ border: on ? 'var(--accent)' : 'var(--line)', bg: on ? 'var(--accent)' : 'transparent', color: on ? 'var(--on-accent)' : 'var(--ink)' });
 
     const pFilters = [['all', 'All'], ['ai', 'AI & ML'], ['bi', 'BI & Apps'], ['de', 'Data Engineering']].map(([k, label]) => ({ label, ...chip(st.pf === k), pick: () => this.setState({ pf: k }) }));
-    const visProjects = this.projects.filter(p => st.pf === 'all' || p.f === st.pf).map(p => ({ ...p, hasShot: !p.noShot, isSensitive: !!p.sensitive, hasAward: !!p.award, stack3: p.stack.slice(0, 3), open: open(p.id) }));
+    const visProjects = this.projects.filter(p => st.pf === 'all' || p.f === st.pf).map(p => ({ ...p, hasRepo: !!p.repo, repo: p.repo || '', hasShot: !p.noShot, isSensitive: !!p.sensitive, hasAward: !!p.award, stack3: p.stack.slice(0, 3), open: open(p.id) }));
     const apRaw = projById(st.active);
 
     const skGroups = this.skillCats.map(c => {
@@ -665,7 +671,7 @@ class Component extends DCLogic {
       },
       pFilters, visProjects,
       hasProject: !!apRaw,
-      ap: apRaw ? { ...apRaw, hasAward: !!apRaw.award } : { approach: [], stack: [] },
+      ap: apRaw ? { ...apRaw, hasAward: !!apRaw.award, hasRepo: !!apRaw.repo, repo: apRaw.repo || '' } : { approach: [], stack: [] },
       skGroups, sk,
       journey, js,
       openObser: open('obser'),
