@@ -8,7 +8,7 @@
 <body>
 <x-dc>
 <helmet>
-<title>Heba Almulla — Data Analyst, Data Scientist &amp; AI Engineer</title>
+<title>Heba Almulla — Data &amp; AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=DM+Sans:wght@400;500;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
 <script src="./image-slot.js"></script>
@@ -17,13 +17,20 @@ html{scroll-behavior:smooth}
 body{margin:0}
 *,*::before,*::after{box-sizing:border-box}
 :root,[data-theme="exec"]{--bg:oklch(0.97 0.008 85);--surface:oklch(0.995 0.004 85);--ink:oklch(0.24 0.04 260);--muted:oklch(0.47 0.03 260);--line:oklch(0.24 0.04 260 / 0.13);--accent:oklch(0.55 0.1 242);--accent-text:oklch(0.46 0.1 245);--accent-soft:oklch(0.93 0.025 240);--on-accent:oklch(0.99 0.004 85);--hero-bg:oklch(0.25 0.05 260);--hero-ink:oklch(0.97 0.008 85);--hero-muted:oklch(0.82 0.02 260);--hero-line:oklch(0.97 0.008 85 / 0.16);--hero-accent:oklch(0.8 0.07 230);--fh:"DM Serif Display",Georgia,serif;--fhw:400;--fb:"DM Sans",system-ui,sans-serif;--r:6px}
-[data-theme="teal"]{--bg:oklch(0.985 0.004 200);--surface:oklch(1 0 0);--ink:oklch(0.22 0.02 230);--muted:oklch(0.48 0.02 230);--line:oklch(0.22 0.02 230 / 0.11);--accent:oklch(0.56 0.1 185);--accent-text:oklch(0.45 0.09 185);--accent-soft:oklch(0.94 0.03 185);--on-accent:oklch(1 0 0);--hero-bg:oklch(0.95 0.025 185);--hero-ink:oklch(0.22 0.02 230);--hero-muted:oklch(0.42 0.03 220);--hero-line:oklch(0.22 0.02 230 / 0.12);--hero-accent:oklch(0.45 0.09 185);--fh:"Plus Jakarta Sans",system-ui,sans-serif;--fhw:800;--fb:"Plus Jakarta Sans",system-ui,sans-serif;--r:14px}
-[data-theme="night"]{--bg:oklch(0.17 0.02 265);--surface:oklch(0.215 0.025 265);--ink:oklch(0.95 0.01 265);--muted:oklch(0.74 0.02 265);--line:oklch(1 0 0 / 0.1);--accent:oklch(0.72 0.13 290);--accent-text:oklch(0.8 0.11 290);--accent-soft:oklch(0.3 0.06 290);--on-accent:oklch(0.17 0.02 265);--hero-bg:oklch(0.14 0.02 265);--hero-ink:oklch(0.96 0.01 265);--hero-muted:oklch(0.76 0.02 265);--hero-line:oklch(1 0 0 / 0.1);--hero-accent:oklch(0.8 0.11 290);--fh:"Space Grotesk",system-ui,sans-serif;--fhw:600;--fb:"IBM Plex Sans",system-ui,sans-serif;--r:10px}
 a{color:var(--accent-text)}
 a:hover{color:var(--ink)}
 button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @keyframes wave{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){[data-wave]{animation:none!important}}
+[data-navtoggle]{display:none}
+@media (max-width:980px){[data-navlinks],[data-navcv]{display:none!important}[data-navtoggle]{display:inline-flex!important}}
+@media (min-width:981px){[data-navpanel]{display:none!important}}
+@keyframes heroIn{from{opacity:0;transform:translateY(28px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+[data-hero]{animation:heroIn 900ms cubic-bezier(.2,.7,.2,1) both}
+[data-hero="1"]{animation-delay:100ms}[data-hero="2"]{animation-delay:280ms}[data-hero="3"]{animation-delay:440ms}[data-hero="4"]{animation-delay:640ms}[data-hero="5"]{animation-delay:820ms}[data-hero="6"]{animation-delay:1000ms}
+.rv-on [data-reveal]{opacity:0;transform:translateY(32px);transition:opacity 700ms ease,transform 700ms cubic-bezier(.2,.7,.2,1)}
+.rv-on [data-reveal].rv-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){[data-hero]{animation:none}.rv-on [data-reveal]{opacity:1;transform:none;transition:none}}
 </style>
 </helmet>
 
@@ -32,7 +39,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 <nav style="position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)">
   <div style="max-width:1200px;margin:0 auto;padding:14px clamp(20px,4vw,40px);display:flex;align-items:center;gap:24px">
     <a href="#top" style="flex:none;font-family:var(--fh);font-weight:var(--fhw);font-size:22px;color:var(--ink);text-decoration:none;white-space:nowrap">Heba Almulla</a>
-    <div style="flex:0 1 auto;margin-left:auto;min-width:0;display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;white-space:nowrap;font-size:14px;font-weight:500">
+    <div data-navlinks style="flex:0 1 auto;margin-left:auto;min-width:0;display:flex;gap:20px;white-space:nowrap;font-size:14px;font-weight:500">
       <a href="#about" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">About</a>
       <a href="#projects" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">Projects</a>
       <a href="#skills" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">Skills</a>
@@ -40,11 +47,25 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
       <a href="#recommendations" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">Recommendations</a>
       <a href="#contact" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">Contact</a>
     </div>
-    <a href="assets/Heba_Almulla_CV.pdf" download="Heba_Almulla_CV.pdf" style="flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600;font-size:14px" style-hover="filter:brightness(1.08)">
+    <a data-navcv href="assets/Heba_Almulla_CV.pdf" download="Heba_Almulla_CV.pdf" style="flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600;font-size:14px" style-hover="filter:brightness(1.08)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="m7 10 5 5 5-5"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path></svg>
       Download CV
     </a>
+    <button data-navtoggle onClick="{{ toggleMenu }}" aria-label="{{ menuLabel }}" aria-expanded="{{ menuAria }}" style="margin-left:auto;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--r);border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="{{ menuIcon }}"></path></svg>
+    </button>
   </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div data-navpanel style="display:flex;flex-direction:column;padding:4px clamp(20px,4vw,40px) 20px;border-top:1px solid var(--line);background:var(--bg)">
+      <a href="#about" onClick="{{ closeMenu }}" style="padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:17px;font-weight:500">About</a>
+      <a href="#projects" onClick="{{ closeMenu }}" style="padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:17px;font-weight:500">Projects</a>
+      <a href="#skills" onClick="{{ closeMenu }}" style="padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:17px;font-weight:500">Skills</a>
+      <a href="#journey" onClick="{{ closeMenu }}" style="padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:17px;font-weight:500">Journey</a>
+      <a href="#recommendations" onClick="{{ closeMenu }}" style="padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:17px;font-weight:500">Recommendations</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="padding:14px 4px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:17px;font-weight:500">Contact</a>
+      <a href="assets/Heba_Almulla_CV.pdf" download="Heba_Almulla_CV.pdf" onClick="{{ closeMenu }}" style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600">Download CV</a>
+    </div>
+  </sc-if>
 </nav>
 
 <header id="top" style="position:relative;overflow:hidden;background:var(--hero-bg);color:var(--hero-ink)">
@@ -52,53 +73,41 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
   <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,4vw,40px) clamp(36px,5vw,56px)">
     <div style="display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,80px);align-items:center">
       <div style="flex:1 1 480px;min-width:0">
-        <div style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:24px">
-          <span style="width:32px;height:1px;background:var(--hero-accent)"></span>Data Analyst, Data Scientist &amp; AI Engineer
+        <div data-hero="1" style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:24px">
+          <span style="flex:none;width:32px;height:1px;background:var(--hero-accent)"></span>Data &amp; AI | Building Intelligent Solutions
         </div>
-        <h1 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(56px,8.5vw,112px);line-height:0.98;letter-spacing:-0.02em;margin:0 0 24px">Heba<br>Almulla</h1>
-        <p style="font-size:clamp(21px,2.3vw,28px);line-height:1.35;max-width:22ch;margin:0 0 36px;color:var(--hero-ink);text-wrap:pretty">I turn data and ideas into intelligent solutions.</p>
-        <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <h1 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(56px,8.5vw,112px);line-height:0.98;letter-spacing:-0.02em;margin:0 0 24px"><span data-hero="2" style="display:block">Heba</span><span data-hero="3" style="display:block">Almulla</span></h1>
+        <p data-hero="4" style="font-size:clamp(21px,2.3vw,28px);line-height:1.35;max-width:22ch;margin:0 0 36px;color:var(--hero-ink);text-wrap:pretty">Connecting insights to possibilities.</p>
+        <div data-hero="5" style="display:flex;gap:14px;flex-wrap:wrap">
           <a href="#projects" style="display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600" style-hover="filter:brightness(1.08)">See my work</a>
           <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:var(--r);border:1px solid var(--hero-line);color:var(--hero-ink);text-decoration:none;font-weight:600" style-hover="background:var(--hero-line)">Get in touch</a>
         </div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--hero-line)">
+    <div data-hero="6" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--hero-line)">
       <div style="padding:22px 20px 0 0"><div style="font-family:var(--fh);font-weight:var(--fhw);font-size:40px;line-height:1">{{ projCount }}</div><div style="font-size:14px;color:var(--hero-muted);margin-top:6px">Projects delivered</div></div>
-      <div style="padding:22px 20px 0 0"><div style="font-family:var(--fh);font-weight:var(--fhw);font-size:40px;line-height:1">2</div><div style="font-size:14px;color:var(--hero-muted);margin-top:6px">Industry roles, Emaar &amp; Savola</div></div>
+      <div style="padding:22px 20px 0 0"><div style="font-family:var(--fh);font-weight:var(--fhw);font-size:40px;line-height:1">2</div><div style="font-size:14px;color:var(--hero-muted);margin-top:6px">Industry experience, Emaar &amp; Savola</div></div>
     </div>
   </div>
 </header>
 
 <section id="about" style="scroll-margin-top:64px">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px)">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">01 — About</div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px clamp(32px,5vw,72px);align-items:end;margin-bottom:clamp(48px,6vw,72px)">
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">01 — About</div>
+    <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px clamp(32px,5vw,72px);align-items:end">
       <h2 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(40px,5.4vw,72px);line-height:1;letter-spacing:-0.02em;margin:0;text-wrap:balance">From messy data to tools people use.</h2>
       <div>
-        <p style="font-size:19px;line-height:1.65;margin:0 0 14px;text-wrap:pretty">I'm Heba, a Data Science graduate who builds data-driven solutions for real business problems. From data pipelines and analysis to applications built with Power Apps or code, I turn messy data into practical, intelligent tools.</p>
-        <p style="font-size:19px;line-height:1.65;margin:0;color:var(--muted);text-wrap:pretty">I'm passionate about data analytics, data science, and AI. Explore my projects below to see my work in action.</p>
+        <p style="font-size:19px;line-height:1.65;margin:0 0 14px;text-wrap:pretty">I’m Heba, a Data Science graduate who turns data into practical solutions for real business problems. From data pipelines and analysis to application development and AI-powered solutions, I enjoy transforming complex data and workflows into tools that make work smarter and easier.</p>
+        <p style="font-size:19px;line-height:1.65;margin:0;color:var(--muted);text-wrap:pretty">Explore my projects below to see how I bring data and technology together to solve problems.</p>
       </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted)"><span>How I work</span><span style="flex:1;height:1px;background:var(--line)"></span><span style="color:var(--accent-text)">Raw data → decisions</span></div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px">
-      <sc-for list="{{ pillars }}" as="pl" hint-placeholder-count="4">
-        <button onMouseEnter="{{ pl.pick }}" onClick="{{ pl.pick }}" style="display:flex;flex-direction:column;gap:10px;padding:0 0 22px;border:1px solid var(--line);border-radius:var(--r);background:{{ pl.bg }};color:var(--ink);text-align:left;font:inherit;cursor:pointer;transition:background 200ms;overflow:hidden">
-          <span style="height:4px;background:{{ pl.bar }};transition:background 200ms"></span>
-          <span style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 20px 0"><span style="font-family:var(--fh);font-weight:var(--fhw);font-size:44px;line-height:1;color:{{ pl.numColor }};transition:color 200ms">{{ pl.no }}</span><span style="font-size:20px;color:var(--muted)">{{ pl.arrow }}</span></span>
-          <span style="padding:0 20px;font-weight:700;font-size:19px">{{ pl.title }}</span>
-          <span style="padding:0 20px;font-size:15px;line-height:1.5;color:var(--muted)">{{ pl.text }}</span>
-          <span style="padding:0 20px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent-text)">{{ pl.tools }}</span>
-        </button>
-      </sc-for>
     </div>
   </div>
 </section>
 
 <section id="projects" style="scroll-margin-top:64px;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px)">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">02 — Projects</div>
-    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:40px">
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">02 — Projects</div>
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:40px">
       <h2 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0">Selected case studies</h2>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
         <sc-for list="{{ pFilters }}" as="f" hint-placeholder-count="4">
@@ -108,7 +117,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:24px">
       <sc-for list="{{ visProjects }}" as="p" hint-placeholder-count="6">
-        <article style="display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--line);background:var(--bg);overflow:hidden">
+        <article data-reveal style="display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--line);background:var(--bg);overflow:hidden">
           <sc-if value="{{ p.hasShot }}" hint-placeholder-val="{{ true }}">
             <div style="position:relative;aspect-ratio:16/9;background:var(--accent-soft)">
               <image-slot id="shot-{{ p.id }}" shape="rect" fit="contain" placeholder="Project screenshot" style="width:100%;height:100%"></image-slot>
@@ -132,7 +141,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
             </div>
           </button>
           <sc-if value="{{ p.hasRepo }}" hint-placeholder-val="{{ false }}">
-            <a href="{{ p.repo }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;margin:0 22px 20px;padding:9px 14px;border-radius:var(--r);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600" style-hover="border-color:var(--accent)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>View code on GitHub<span style="margin-left:auto;color:var(--accent-text)">↗</span></a>
+            <a href="{{ p.repo }}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;margin:0 22px 20px;padding:9px 14px;border-radius:var(--r);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:14px;font-weight:600" style-hover="border-color:var(--accent)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.6 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"></path></svg>View code on GitHub<span style="margin-left:auto;color:var(--accent-text)">↗</span></a>
           </sc-if>
         </article>
       </sc-for>
@@ -142,13 +151,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 
 <section id="skills" style="scroll-margin-top:64px">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px)">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">03 — Technical skills</div>
-    <h2 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 12px">What I work with</h2>
-    <p style="margin:0 0 32px;font-size:17px;color:var(--muted)">All my skills at a glance. Select any one to see what it is and where I've used it.</p>
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">03 — Technical skills</div>
+    <h2 data-reveal style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 12px">What I work with</h2>
+    <p data-reveal style="margin:0 0 32px;font-size:17px;color:var(--muted)">All my skills at a glance. Select any one to see what it is and where I've used it.</p>
     <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
       <div style="flex:1 1 520px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px">
         <sc-for list="{{ skGroups }}" as="g" hint-placeholder-count="4">
-          <div style="padding:20px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface)">
+          <div data-reveal style="padding:20px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface)">
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:14px"><span style="font-weight:700;font-size:16px">{{ g.label }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)">{{ g.count }}</span></div>
             <div style="display:flex;flex-wrap:wrap;gap:8px">
               <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="6">
@@ -158,7 +167,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
           </div>
         </sc-for>
       </div>
-      <div style="flex:1 1 340px;position:sticky;top:84px;padding:clamp(24px,3vw,32px);border-radius:var(--r);background:var(--hero-bg);color:var(--hero-ink)">
+      <div data-reveal style="flex:1 1 340px;position:sticky;top:84px;padding:clamp(24px,3vw,32px);border-radius:var(--r);background:var(--hero-bg);color:var(--hero-ink)">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:10px">{{ sk.catLabel }}</div>
         <h3 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(30px,3.4vw,40px);line-height:1.05;margin:0 0 20px">{{ sk.name }}</h3>
         <div style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--hero-muted);margin-bottom:4px">What it is</div>
@@ -183,12 +192,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 
 <section id="strengths" style="scroll-margin-top:64px;border-top:1px solid var(--line)">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px)">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">04 — Professional skills</div>
-    <h2 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 12px">How I work with people</h2>
-    <p style="margin:0 0 36px;font-size:17px;color:var(--muted)">Flip a card to see where and how I built each skill.</p>
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">04 — Professional skills</div>
+    <h2 data-reveal style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 12px">How I work with people</h2>
+    <p data-reveal style="margin:0 0 36px;font-size:17px;color:var(--muted)">Flip a card to see where and how I built each skill.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px">
       <sc-for list="{{ softSkills }}" as="s" hint-placeholder-count="6">
-        <button onClick="{{ s.flip }}" aria-pressed="{{ s.pressed }}" style="position:relative;height:260px;padding:0;border:0;background:transparent;perspective:1200px;text-align:left;font:inherit;color:inherit;cursor:pointer">
+        <button data-reveal onClick="{{ s.flip }}" aria-pressed="{{ s.pressed }}" style="position:relative;height:260px;padding:0;border:0;background:transparent;perspective:1200px;text-align:left;font:inherit;color:inherit;cursor:pointer">
           <span style="position:absolute;inset:0;display:block;transform-style:preserve-3d;transition:transform 650ms cubic-bezier(.2,.8,.2,1);transform:rotateY({{ s.rot }}deg)">
             <span style="position:absolute;inset:0;display:flex;flex-direction:column;padding:24px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);backface-visibility:hidden;-webkit-backface-visibility:hidden">
               <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent-text)">{{ s.no }}</span>
@@ -211,11 +220,11 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 
 <section id="journey" style="scroll-margin-top:64px;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px)">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">05 — Journey</div>
-    <h2 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 40px">Education &amp; experience</h2>
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">05 — Journey</div>
+    <h2 data-reveal style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 40px">Education &amp; experience</h2>
     <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
       <sc-for list="{{ journey }}" as="j" hint-placeholder-count="3">
-        <button onClick="{{ j.pick }}" style="position:relative;display:flex;flex-direction:column;gap:6px;padding:28px 24px 24px;border-radius:var(--r);border:1px solid {{ j.border }};background:{{ j.bg }};color:var(--ink);text-align:left;font:inherit;cursor:pointer;transition:border-color 160ms, background 160ms" style-hover="border-color:var(--accent)">
+        <button data-reveal onClick="{{ j.pick }}" style="position:relative;display:flex;flex-direction:column;gap:6px;padding:28px 24px 24px;border-radius:var(--r);border:1px solid {{ j.border }};background:{{ j.bg }};color:var(--ink);text-align:left;font:inherit;cursor:pointer;transition:border-color 160ms, background 160ms" style-hover="border-color:var(--accent)">
           <span style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--accent);background:{{ j.dot }}"></span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text)">{{ j.type }}</span>
@@ -227,7 +236,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
         </button>
       </sc-for>
     </div>
-    <div style="margin-top:20px;padding:clamp(24px,3.5vw,40px);border-radius:var(--r);background:var(--bg);border:1px solid var(--line);display:flex;flex-wrap:wrap;gap:24px 48px">
+    <div data-reveal style="margin-top:20px;padding:clamp(24px,3.5vw,40px);border-radius:var(--r);background:var(--bg);border:1px solid var(--line);display:flex;flex-wrap:wrap;gap:24px 48px">
       <div style="flex:1 1 260px">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:10px">{{ js.type }} · {{ js.date }}</div>
         <h3 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(28px,3vw,36px);line-height:1.1;margin:0 0 8px">{{ js.title }}</h3>
@@ -255,9 +264,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 
 <section id="achievements" style="scroll-margin-top:64px">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px)">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">06 — Achievements</div>
-    <h2 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 40px">Awards &amp; certificates</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:28px;padding:clamp(28px,4vw,44px);border-radius:var(--r);background:var(--hero-bg);color:var(--hero-ink);margin-bottom:56px;align-items:center">
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">06 — Achievements</div>
+    <h2 data-reveal style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 40px">Awards &amp; certificates</h2>
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:28px;padding:clamp(28px,4vw,44px);border-radius:var(--r);background:var(--hero-bg);color:var(--hero-ink);margin-bottom:56px;align-items:center">
       <div style="flex:0 0 auto;font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(72px,9vw,120px);line-height:0.9;color:var(--hero-accent)">1st</div>
       <div style="flex:1 1 360px">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:8px">First Place Winner</div>
@@ -266,7 +275,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
       </div>
       <button onClick="{{ openObser }}" style="padding:12px 20px;border-radius:var(--r);border:1px solid var(--hero-line);background:transparent;color:var(--hero-ink);font:inherit;font-weight:600;cursor:pointer" style-hover="background:var(--hero-line)">View project →</button>
     </div>
-    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:24px">
+    <div data-reveal style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:24px">
       <div style="font-family:var(--fh);font-weight:var(--fhw);font-size:28px">Certificates</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px">
         <sc-for list="{{ cFilters }}" as="f" hint-placeholder-count="6">
@@ -276,7 +285,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:14px">
       <sc-for list="{{ visCerts }}" as="c" hint-placeholder-count="6">
-        <button onClick="{{ c.open }}" style="display:flex;flex-direction:column;gap:10px;padding:20px;min-height:150px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);color:var(--ink);text-align:left;font:inherit;cursor:pointer" style-hover="border-color:var(--accent)">
+        <button data-reveal onClick="{{ c.open }}" style="display:flex;flex-direction:column;gap:10px;padding:20px;min-height:150px;border-radius:var(--r);border:1px solid var(--line);background:var(--surface);color:var(--ink);text-align:left;font:inherit;cursor:pointer" style-hover="border-color:var(--accent)">
           <span style="display:flex;justify-content:space-between;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent-text)"><span>{{ c.catLabel }}</span><span style="color:var(--muted)">{{ c.date }}</span></span>
           <span style="flex:1;display:flex;flex-direction:column;gap:6px"><span style="font-weight:700;font-size:17px;line-height:1.3">{{ c.title }}</span><sc-for list="{{ c.items }}" as="it" hint-placeholder-count="0"><span style="font-size:13px;line-height:1.4;color:var(--muted)">{{ it }}</span></sc-for></span>
           <span style="display:flex;justify-content:space-between;gap:8px;font-size:13px;color:var(--muted)"><span>{{ c.issuer }}</span><span style="font-weight:600;color:var(--accent-text);white-space:nowrap">View ↗</span></span>
@@ -293,10 +302,10 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 
 <section id="recommendations" style="scroll-margin-top:64px;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px)">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">07 — Recommendations</div>
-    <h2 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 40px">What colleagues say</h2>
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:14px">07 — Recommendations</div>
+    <h2 data-reveal style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(36px,4.6vw,58px);line-height:1.05;letter-spacing:-0.015em;margin:0 0 40px">What colleagues say</h2>
     <div style="display:flex;flex-wrap:wrap;gap:28px;align-items:stretch">
-      <div style="flex:1 1 280px;display:flex;flex-direction:column;gap:10px">
+      <div data-reveal style="flex:1 1 280px;display:flex;flex-direction:column;gap:10px">
         <sc-for list="{{ recs }}" as="r" hint-placeholder-count="3">
           <button onClick="{{ r.pick }}" style="display:flex;align-items:center;gap:14px;padding:16px;border-radius:var(--r);border:1px solid {{ r.border }};background:{{ r.bg }};color:var(--ink);text-align:left;font:inherit;cursor:pointer" style-hover="border-color:var(--accent)">
             <span style="flex:0 0 46px;height:46px;border-radius:50%;display:grid;place-items:center;background:{{ r.avBg }};color:{{ r.avColor }};font-weight:700;font-size:15px">{{ r.initials }}</span>
@@ -307,7 +316,7 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
           </button>
         </sc-for>
       </div>
-      <figure style="flex:2 1 460px;margin:0;padding:clamp(28px,4vw,48px);border-radius:var(--r);background:var(--bg);border:1px solid var(--line);display:flex;flex-direction:column">
+      <figure data-reveal style="flex:2 1 460px;margin:0;padding:clamp(28px,4vw,48px);border-radius:var(--r);background:var(--bg);border:1px solid var(--line);display:flex;flex-direction:column">
         <div style="font-family:var(--fh);font-size:96px;line-height:0.6;height:44px;color:var(--accent)">“</div>
         <blockquote style="margin:0 0 28px;font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(21px,2.2vw,27px);line-height:1.4;flex:1;text-wrap:pretty">{{ rec.text }}</blockquote>
         <figcaption style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;padding-top:20px;border-top:1px solid var(--line)">
@@ -327,15 +336,15 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 
 <section id="contact" style="scroll-margin-top:64px;background:var(--hero-bg);color:var(--hero-ink)">
   <div style="max-width:1200px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,40px) 40px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:14px">08 — Contact</div>
+    <div data-reveal style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:14px">08 — Contact</div>
     <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-end;justify-content:space-between">
-      <div style="flex:1 1 420px">
+      <div data-reveal style="flex:1 1 420px">
         <h2 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(40px,5.5vw,72px);line-height:1.02;letter-spacing:-0.02em;margin:0 0 16px">Open to new opportunities.</h2>
-        <p style="margin:0;font-size:18px;color:var(--hero-muted);max-width:44ch">I'm actively looking for roles in data analytics, data science and AI, and I'm always happy to connect.</p>
+        <p style="margin:0;font-size:18px;color:var(--hero-muted);max-width:44ch">I’m actively exploring opportunities in data and AI, where I can apply my skills to solve business problems and create meaningful impact.</p>
       </div>
       <a href="assets/Heba_Almulla_CV.pdf" download="Heba_Almulla_CV.pdf" style="display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600" style-hover="filter:brightness(1.08)">Download CV</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:48px">
+    <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:48px">
       <a href="mailto:hebakhalidalmulla0@gmail.com" style="display:block;padding:20px;border-radius:var(--r);border:1px solid var(--hero-line);color:var(--hero-ink);text-decoration:none" style-hover="background:var(--hero-line)"><div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:6px">Email</div><div style="font-weight:600;font-size:16px;word-break:break-word">hebakhalidalmulla0@gmail.com</div></a>
       <a href="tel:+966548053364" style="display:block;padding:20px;border-radius:var(--r);border:1px solid var(--hero-line);color:var(--hero-ink);text-decoration:none" style-hover="background:var(--hero-line)"><div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:6px">Phone</div><div style="font-weight:600;font-size:16px">+966 54 805 3364</div></a>
       <a href="https://linkedin.com/in/heba-almulla" target="_blank" rel="noopener" style="display:block;padding:20px;border-radius:var(--r);border:1px solid var(--hero-line);color:var(--hero-ink);text-decoration:none" style-hover="background:var(--hero-line)"><div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--hero-accent);margin-bottom:6px">LinkedIn</div><div style="font-weight:600;font-size:16px">in/heba-almulla</div></a>
@@ -346,8 +355,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 </section>
 
 <sc-if value="{{ hasProject }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:oklch(0.15 0.02 260 / 0.6)">
-    <div onClick="{{ stop }}" style="width:min(760px,100%);max-height:90vh;overflow-y:auto;border-radius:var(--r);background:var(--bg);color:var(--ink);box-shadow:0 24px 64px oklch(0 0 0 / 0.3);padding:clamp(24px,4vw,44px)">
+  <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:50;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;display:flex;justify-content:center;align-items:flex-start;padding:clamp(12px,4vh,40px) 14px;background:oklch(0.15 0.02 260 / 0.6)">
+    <div onClick="{{ stop }}" style="width:min(760px,100%);margin:auto 0;border-radius:var(--r);background:var(--bg);color:var(--ink);box-shadow:0 24px 64px oklch(0 0 0 / 0.3);padding:clamp(24px,4vw,44px)">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:10px">
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text)">{{ ap.cat }}</div>
         <button onClick="{{ closeAll }}" aria-label="Close" style="width:40px;height:40px;flex:none;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:18px;cursor:pointer">✕</button>
@@ -377,12 +386,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 </sc-if>
 
 <sc-if value="{{ hasCert }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:oklch(0.15 0.02 260 / 0.6)">
-    <div onClick="{{ stop }}" style="width:min(820px,100%);max-height:92vh;overflow-y:auto;border-radius:var(--r);background:var(--bg);color:var(--ink);box-shadow:0 24px 64px oklch(0 0 0 / 0.3);padding:clamp(20px,3vw,32px)">
+  <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:50;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;display:flex;justify-content:center;align-items:flex-start;padding:clamp(12px,4vh,40px) 14px;background:oklch(0.15 0.02 260 / 0.6)">
+    <div onClick="{{ stop }}" style="width:min(820px,100%);margin:auto 0;border-radius:var(--r);background:var(--bg);color:var(--ink);box-shadow:0 24px 64px oklch(0 0 0 / 0.3);padding:clamp(20px,3vw,32px)">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px">
         <div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px">{{ ac.catLabel }} · {{ ac.issuer }}</div>
           <h3 style="font-family:var(--fh);font-weight:var(--fhw);font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0">{{ ac.title }}</h3>
+          <sc-if value="{{ ac.multi }}" hint-placeholder-val="{{ false }}"><div style="margin-top:8px;font-size:14px;color:var(--muted)">{{ ac.multiNote }}</div></sc-if>
         </div>
         <button onClick="{{ closeAll }}" aria-label="Close" style="width:40px;height:40px;flex:none;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:18px;cursor:pointer">✕</button>
       </div>
@@ -403,33 +413,12 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
   </div>
 </sc-if>
 
-<div style="position:fixed;right:18px;bottom:18px;z-index:40;display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 28px oklch(0 0 0 / 0.18)">
-  <span style="padding:0 8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)">Style</span>
-  <sc-for list="{{ themes }}" as="t" hint-placeholder-count="3">
-    <button onClick="{{ t.pick }}" style="display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;border:0;background:{{ t.bg }};color:{{ t.color }};font-family:system-ui,sans-serif;font-size:13px;font-weight:600;cursor:pointer">
-      <span style="display:flex"><span style="width:12px;height:12px;border-radius:50%;background:{{ t.c1 }}"></span><span style="width:12px;height:12px;border-radius:50%;margin-left:-4px;background:{{ t.c2 }}"></span></span>{{ t.label }}
-    </button>
-  </sc-for>
-</div>
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Executive&quot;,&quot;Modern&quot;,&quot;Midnight&quot;],&quot;default&quot;:&quot;Executive&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
-  state = { theme: null, pf: 'all', active: null, skCat: 'ai', skSel: 'RAG', jSel: 'savola', cf: 'all', allCerts: false, cert: null, rec: 0 };
-
-  themesList = [
-    { key: 'exec', label: 'Executive', c1: 'oklch(0.25 0.05 260)', c2: 'oklch(0.55 0.1 242)' },
-    { key: 'teal', label: 'Modern', c1: 'oklch(0.95 0.025 185)', c2: 'oklch(0.56 0.1 185)' },
-    { key: 'night', label: 'Midnight', c1: 'oklch(0.17 0.02 265)', c2: 'oklch(0.72 0.13 290)' }
-  ];
-
-  pillars = [
-    { no: '01', title: 'Engineer the data', text: 'Pipelines and distributed storage that get data ready for analytics.', tools: 'Hadoop · NiFi · SQL' },
-    { no: '02', title: 'Analyze & visualize', text: 'Dashboards and data models that turn operational data into decisions.', tools: 'Power BI · DAX · Tableau' },
-    { no: '03', title: 'Model with ML & AI', text: 'Deep learning, NLP and RAG-based agentic systems.', tools: 'Python · LangChain · ChromaDB' },
-    { no: '04', title: 'Ship the tool', text: 'Power Apps and code that replace manual, spreadsheet-based workflows.', tools: 'Power Apps · FastAPI' }
-  ];
+  state = { menuOpen: false, pf: 'all', active: null, skCat: 'ai', skSel: 'RAG', jSel: 'savola', cf: 'all', allCerts: false, cert: null, rec: 0 };
 
   softSkillsList = [
     { name: 'Stakeholder communication', where: 'Savola Foods', how: 'Translated logistics stakeholders’ requirements into dashboard specifications and reporting insights.' },
@@ -445,57 +434,57 @@ class Component extends DCLogic {
   projects = [
     { id: 'aura', f: 'ai', cat: 'Agentic AI · RAG', title: 'AuraGTM', org: 'Saudi Digital Academy', date: '05/2026 – 06/2026', role: 'Development lead',
       summary: 'An Agentic AI platform that turns product and company inputs into source-grounded go-to-market strategies.',
-      challenge: 'Businesses struggle to create effective go-to-market strategies due to scattered market insights, fragmented data, and time-consuming planning.',
-      approach: ['Developed an AI-powered platform using agentic AI and RAG technology.', 'Integrated LangChain and ChromaDB to process business documents and market insights, generating grounded, personalized strategies.'],
-      outcome: 'A platform that transforms business data into actionable GTM strategies—including personas, competitor analysis, marketing channels, localization insights, launch roadmaps, and content ideas—in minutes instead of weeks.',
+      challenge: 'Businesses struggle to develop effective go-to-market strategies because market insights and company knowledge are scattered across different sources, making research and planning time-consuming.',
+      approach: ['Designed a multi-agent AI architecture combining Strategist and Critic agents to generate and evaluate GTM strategies.', 'Implemented a hybrid RAG pipeline using semantic search and BM25 with LangChain and ChromaDB to retrieve relevant business knowledge and ground generated recommendations.'],
+      outcome: 'Delivered an AI-powered platform that transforms product information and business knowledge into structured GTM strategies, including customer personas, competitor analysis, positioning, localization insights, marketing channels, launch roadmaps, and content recommendations.',
       stack: ['Python', 'LangChain', 'ChromaDB', 'RAG', 'Agentic AI'] },
     { id: 'obser', f: 'ai', cat: 'Deep Learning · NLP', title: 'OBSER', org: 'University of Jeddah', date: '01/2024 – 12/2024', role: 'Graduation project', award: true,
       summary: 'A deep learning system for bidirectional translation between Arabic text and Braille.',
-      challenge: 'Arabic reading material is hard to access for visually impaired readers when it is not available in Braille.',
-      approach: ['Collected, processed, and modeled Arabic and Braille datasets to improve translation accuracy.', 'Developed a deep learning-based system that translates in both directions: Arabic to Braille and Braille to Arabic.'],
-      outcome: 'Supports Arabic reading material translation for visually impaired users.',
+      challenge: 'Arabic reading materials are not always accessible to visually impaired readers, particularly when content is unavailable in Braille.',
+      approach: ['Collected, processed, and prepared Arabic text and Braille datasets for model development.', 'Developed a deep learning system supporting bidirectional translation between Arabic text and Braille.', 'Worked on both translation directions to make Arabic content more accessible.'],
+      outcome: 'Developed a bidirectional Arabic-to-Braille and Braille-to-Arabic translation system to support greater accessibility to Arabic reading materials. The project won First Place at the University of Jeddah’s Innovation and Entrepreneurship Forum.',
       stack: ['Python', 'Deep Learning', 'NLP'] },
-    { id: 'savola-bi', f: 'bi', sensitive: true, cat: 'Business Intelligence', title: 'Logistics Performance Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
+    { id: 'savola-app', f: 'bi', cat: 'Power Apps · Excel Integration · Access Control', title: 'Inbound Logistics Portal', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
+      summary: 'A centralized self-service Power Apps portal that gives other departments and management direct access to shipment information.',
+      challenge: 'The Inbound Logistics team handled daily information-sharing needs from other departments and management regarding shipment details, arrival schedules, and operational updates. Providing access to this information manually required time and effort from the team.',
+      approach: ['Developed a centralized Power Apps portal with two dedicated sections: one for the Inbound Logistics team and another for external departments and management.', 'Implemented email-based access control to restrict the internal section to authorized Inbound Logistics team members, protecting internal information and updates.', 'Designed the external section to provide departments and management with access to relevant shipment information and approved updates.', 'Connected the application to Excel as its data source, enabling information to update automatically whenever the source Excel sheet is updated.'],
+      outcome: 'Delivered a centralized self-service portal that improved access to shipment information, reduced the time and manual effort required from the Inbound Logistics team to share updates, and streamlined information access for multiple departments and management while maintaining controlled access to internal data.',
+      stack: ['Power Apps', 'Excel', 'Access control'] },
+    { id: 'savola-bi', f: 'bi', sensitive: true, cat: 'Power BI · Data Modeling · Data Integration · DAX', title: 'Logistics Performance Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
       summary: 'A master Power BI dashboard and data model for oil shipments, delays, and logistics performance.',
-      challenge: 'Logistics stakeholders needed one reliable view of shipments, delays and performance over time.',
-      approach: ['Translated stakeholders’ requirements into dashboard specifications.', 'Designed a master data model covering 3+ years of historical shipment data.'],
-      outcome: 'A master dashboard supporting shipment tracking and operational decision-making.',
-      stack: ['Power BI', 'Data modeling', 'Excel'] },
-    { id: 'savola-app', f: 'bi', cat: 'Power Apps', title: 'Inbound Logistics Portal', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
-      summary: 'A centralized Power Apps system for inbound logistics, used by 4 departments and additional individual users.',
-      challenge: 'Inbound logistics data lived in separate spreadsheets, and teams depended on daily email updates to stay current.',
-      approach: ['Built a Power Apps application that centralizes inbound logistics requests and tracking in one place.', 'Connected it to live data so every user always sees the latest information, with no manual updates needed.'],
-      outcome: 'Replaced manual spreadsheets and repetitive email updates with one centralized, automated system used by 4 departments and additional individual users.',
-      stack: ['Power Apps', 'Excel'] },
-    { id: 'savola-cert', f: 'bi', sensitive: true, cat: 'Business Intelligence', title: 'Certificates Validity Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
-      summary: 'A monitoring dashboard that tracks which certificates need to be issued or renewed, and alerts the team before any of them expire.',
-      challenge: 'The Inbound Logistics department has to keep many certificates valid. Spotting the ones about to expire, and giving management an update on renewals, depended on asking people directly.',
-      approach: ['Built a dashboard that tracks every certificate the department needs to issue or renew, with its expiry date and current status.', 'Added alerts that flag certificates close to expiry, so the team can update them in time.'],
-      outcome: 'The team catches expiring certificates before they lapse, and top management can follow renewal progress at any time without needing to ask anyone.',
+      challenge: 'Logistics data was distributed across multiple datasets and reporting files, making it difficult to establish a consolidated view of shipment activity, track operational performance, and analyze historical trends consistently.',
+      approach: ['Integrated multiple data sources, addressing data inconsistencies and relationship challenges through extensive data cleaning, preparation, and transformation.', 'Designed a unified data model to connect shipment records and consolidate historical data covering three years of operations.', 'Developed a master Power BI dashboard to monitor the shipment lifecycle, including shipment status, delays, suppliers, costs, quantities, and delivery progress.', 'Created custom DAX measures to calculate delay indicators, delay percentages, and additional operational performance metrics.'],
+      outcome: 'Delivered a centralized dashboard providing the Inbound Logistics team and management with a comprehensive view of shipment activity and operational performance across three years. Enabled more consistent shipment tracking, delay analysis, cost monitoring, and data-driven operational insights.',
+      stack: ['Power BI', 'DAX', 'Data modeling', 'Excel'] },
+    { id: 'savola-cert', f: 'bi', sensitive: true, cat: 'Power BI · Certificate Tracking · Expiry Monitoring', title: 'Certificates Validity Dashboard', org: 'Savola Foods', date: '11/2025 – 05/2026', role: 'Business Intelligence Specialist',
+      summary: 'A monitoring dashboard that tracks which certificates need to be issued or renewed, and alerts the team three months before they expire.',
+      challenge: 'The Inbound Logistics team managed a large number of certificates with different validity and renewal requirements. Keeping track of their status, identifying upcoming expirations, and ensuring timely renewal required continuous monitoring.',
+      approach: ['Developed a centralized Power BI dashboard to track certificates across two categories: continuous certificates requiring renewal and one-time certificates requiring new issuance upon expiration.', 'Organized certificate records by status, highlighting renewed, active, soon-to-expire, and expired certificates.', 'Implemented a three-month advance alert to help the team identify continuous certificates approaching expiration and initiate renewal in time.', 'Included direct links to certificate registration and renewal platforms, simplifying access to the required services.', 'Designed the dashboard to support certificate monitoring by both the Inbound Logistics team and its management.'],
+      outcome: 'Delivered a centralized certificate monitoring dashboard that improved visibility into certificate validity and renewal status, helped the team proactively identify upcoming expirations, and simplified access to renewal platforms, reducing manual tracking effort.',
       stack: ['Power BI', 'Data modeling'] },
-    { id: 'emaar-kpi', f: 'bi', sensitive: true, cat: 'Business Intelligence', title: 'Strategic KPI Dashboards', org: 'Emaar · KAEC', date: '06/2024 – 08/2024', role: 'BI & Analytics Intern',
+    { id: 'emaar-kpi', f: 'bi', sensitive: true, cat: 'Business Intelligence · Performance Monitoring', title: 'Strategic KPI Dashboards', org: 'Emaar · KAEC', date: '06/2024 – 08/2024', role: 'BI & Analytics Intern',
       summary: 'Power BI dashboards to monitor key performance indicators and strategic initiatives.',
-      challenge: 'Teams needed a clear, current view of KPIs and strategic initiatives.',
-      approach: ['Designed and built Power BI dashboards to monitor key performance indicators and strategic initiatives.'],
-      outcome: 'Dashboards for ongoing KPI and initiative monitoring.',
+      challenge: 'Departments needed a clear and accessible way to monitor key performance indicators and track the progress of strategic initiatives across the organization.',
+      approach: ['Designed and developed Power BI dashboards to monitor KPIs and strategic initiatives.', 'Organized reporting views to support navigation across departments, initiatives, and activities.', 'Created interactive reporting pages to make performance information easier to explore and monitor.'],
+      outcome: 'Delivered interactive KPI dashboards that improved visibility into organizational performance and provided management with a structured view of strategic initiative progress.',
       stack: ['Power BI'] },
-    { id: 'kaec', f: 'de', cat: 'Data Engineering', title: 'KAEC Data Pipelines', org: 'Emaar · KAEC', date: '06/2024 – 08/2024', role: 'BI & Analytics Intern',
-      summary: 'Data pipelines using NiFi and Hadoop to integrate and prepare data for analytics.',
-      challenge: 'Data from different systems had to be integrated and prepared before it could be analyzed.',
-      approach: ['Managed and monitored Apache Hadoop for distributed data storage in a Linux-based environment.', 'Set up and evaluated Apache NiFi for future data pipeline integration.'],
-      outcome: 'A working storage layer and an evaluated path for future pipeline integration.',
-      stack: ['Apache Hadoop', 'Apache NiFi', 'Linux'] },
-    { id: 'marketing', f: 'bi', repo: 'https://github.com/Heba-Almulla/Marketing-Analysis-Portfolio', cat: 'Data Analysis · Sentiment', title: 'Marketing Analysis', org: 'Personal project', date: '', role: 'Self-learning project',
+    { id: 'kaec', f: 'de', cat: 'Data Engineering · Big Data', title: 'KAEC Data Pipelines', org: 'Emaar · KAEC', date: '06/2024 – 08/2024', role: 'BI & Analytics Intern',
+      summary: 'Collected data from social media APIs and a SOAP-based website, and stored it in Hadoop HDFS for future analytics.',
+      challenge: 'Data from multiple external sources needed to be collected and stored in a distributed environment to support future data integration and analytics.',
+      approach: ['Worked with Apache Hadoop HDFS in a Linux environment to manage and monitor distributed data storage.', 'Retrieved data from social media APIs and KAEC’s SOAP-based website, then transferred and stored it in Hadoop HDFS.', 'Installed and explored Apache NiFi to understand its data ingestion and flow management capabilities in preparation for future pipeline implementation.'],
+      outcome: 'Successfully retrieved and stored data from multiple external sources in Hadoop HDFS, gaining practical exposure to distributed data storage and exploring Apache NiFi as a foundation for future data pipeline development.',
+      stack: ['Apache Hadoop', 'HDFS', 'Linux', 'Apache NiFi'] },
+    { id: 'marketing', f: 'bi', repo: 'https://github.com/Heba-Almulla/Marketing-Analysis-Portfolio', cat: 'Data Analytics · Sentiment Analysis', title: 'Marketing Analysis', org: 'Personal project', date: '', role: 'Self-learning project',
       summary: 'An end-to-end marketing analysis that uses SQL, Python and Power BI to turn campaign, engagement and review data into business insights.',
-      challenge: 'A business wants to know which products convert, how customers engage with its content, and what they really think in their reviews, but the data is raw, messy and spread across separate tables.',
-      approach: ['Cleaned and enriched the data in SQL Server: categorized products by price, added geography and age segments to customers, removed duplicate reviews and filled missing values.', 'Ran sentiment analysis on customer reviews in Python with VADER, then categorized each review by sentiment score and rating.', 'Built three Power BI dashboards: Marketing Overview, Conversion & Campaign Performance, and Customer Feedback Insights.'],
-      outcome: 'Interactive dashboards that show conversion rates by product and month, social media engagement, campaign performance by channel, and customer sentiment trends, all filterable by year and month.',
+      challenge: 'A business needs to understand product performance, customer engagement, campaign effectiveness, and customer feedback, but the relevant information is spread across raw and disconnected datasets.',
+      approach: ['Cleaned and transformed data using SQL Server, addressing missing values and duplicate records while enriching customer and product attributes.', 'Applied VADER sentiment analysis in Python to classify customer reviews and examine sentiment patterns.', 'Developed three Power BI dashboards covering marketing performance, campaign conversions, and customer feedback.'],
+      outcome: 'Delivered interactive dashboards providing insights into product conversion, campaign performance, social media engagement, and customer sentiment, with filters to explore trends across different periods.',
       stack: ['SQL Server', 'Python', 'VADER', 'Power BI'] },
-    { id: 'nasa', f: 'bi', cat: 'Data Analysis · API', title: 'NASA Near-Earth Objects Analysis', org: 'Personal project', date: '2025', role: 'Self-learning project',
+    { id: 'nasa', f: 'bi', cat: 'Data Analysis · API Integration', title: 'NASA Near-Earth Objects Analysis', org: 'Personal project', date: '2025', role: 'Self-learning project',
       summary: 'Real NASA asteroid data, pulled with Python and analyzed in Power BI to uncover near-Earth object trends and potential risks.',
-      challenge: 'NASA publishes asteroid data through an open API, but in raw form it is hard to see patterns, like which asteroids are hazardous, how fast they travel, or how close they pass to Earth.',
-      approach: ['Used Python to fetch three months of 2025 asteroid data from NASA’s Open API in weekly batches, saving structured records to CSV files.', 'Organized each asteroid’s size, velocity, miss distance and hazardous status for analysis.', 'Built an interactive Power BI dashboard with date and hazard filters.'],
-      outcome: 'A dashboard covering 1,278 unique asteroids that highlights the 63 potentially hazardous ones, compares velocity and miss distance by size, and tracks hazardous asteroids over time.',
+      challenge: 'NASA provides extensive asteroid data through its public API, but raw records make it difficult to explore asteroid characteristics, identify potentially hazardous objects, and understand trends over time.',
+      approach: ['Retrieved three months of 2025 asteroid data from NASA’s Open API using Python, processing the data in weekly batches.', 'Structured and prepared asteroid attributes, including size, velocity, miss distance, and hazardous status.', 'Developed an interactive Power BI dashboard with date-based and hazard-status filters.'],
+      outcome: 'Analyzed 1,278 unique near-Earth objects, identifying 63 potentially hazardous asteroids and enabling exploration of their characteristics, velocity, miss distance, and distribution over time.',
       stack: ['Python', 'NASA Open API', 'Power BI', 'Excel'] }
   ];
 
@@ -582,8 +571,30 @@ class Component extends DCLogic {
       if (this.state.cert && e.key === 'ArrowLeft') this.stepCert(-1);
     };
     window.addEventListener('keydown', this.onKey);
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce && 'IntersectionObserver' in window && 'MutationObserver' in window) {
+      document.documentElement.classList.add('rv-on');
+      this.io = new IntersectionObserver(entries => {
+        let n = 0;
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          e.target.style.transitionDelay = Math.min(n++ * 90, 360) + 'ms';
+          e.target.classList.add('rv-in');
+          this.io.unobserve(e.target);
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      const scan = () => document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => { el.setAttribute('data-rv', ''); this.io.observe(el); });
+      scan();
+      this.mo = new MutationObserver(scan);
+      this.mo.observe(document.body, { childList: true, subtree: true });
+    }
   }
-  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onKey);
+    if (this.io) this.io.disconnect();
+    if (this.mo) this.mo.disconnect();
+    document.documentElement.classList.remove('rv-on');
+  }
 
   waves() {
     const h = React.createElement;
@@ -604,7 +615,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const st = this.state;
-    const themeKey = st.theme || ({ Executive: 'exec', Modern: 'teal', Midnight: 'night' }[this.props.theme] || 'exec');
+    const themeKey = 'exec';
     const open = id => () => this.setState({ active: id, cert: null });
     const projById = id => this.projects.find(p => p.id === id);
     const projLinks = ids => ids.map(id => ({ title: projById(id).title, open: open(id) }));
@@ -650,13 +661,13 @@ class Component extends DCLogic {
 
     return {
       themeKey,
-      themes: this.themesList.map(t => ({ ...t, pick: () => this.setState({ theme: t.key }), bg: t.key === themeKey ? 'var(--ink)' : 'transparent', color: t.key === themeKey ? 'var(--bg)' : 'var(--ink)' })),
+      menuOpen: !!st.menuOpen,
+      menuAria: st.menuOpen ? 'true' : 'false',
+      menuLabel: st.menuOpen ? 'Close menu' : 'Open menu',
+      menuIcon: st.menuOpen ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16',
+      toggleMenu: () => this.setState({ menuOpen: !st.menuOpen }),
+      closeMenu: () => this.setState({ menuOpen: false }),
       certCount: this.certs.length,
-      pillars: this.pillars.map((p, i) => {
-        const on = i === (st.aboutSel ?? 0);
-        return { ...p, arrow: i < 3 ? '→' : '✓', pick: () => this.setState({ aboutSel: i }),
-          bar: on ? 'var(--accent)' : 'var(--line)', bg: on ? 'var(--surface)' : 'transparent', numColor: on ? 'var(--accent-text)' : 'var(--muted)' };
-      }),
       softSkills: this.softSkillsList.map((s, i) => {
         const f = !!(st.flipped || {})[i];
         return { ...s, no: String(i + 1).padStart(2, '0'), rot: f ? 180 : 0, pressed: f ? 'true' : 'false',
@@ -680,7 +691,7 @@ class Component extends DCLogic {
       certToggleLabel: st.allCerts ? 'Show fewer' : 'Show all ' + fc.length + ' certificates',
       toggleCerts: () => this.setState({ allCerts: !st.allCerts }),
       hasCert: !!acRaw,
-      ac: acRaw ? { ...acRaw, catLabel: catLabel(acRaw.cat), pos: (acIdx + 1) + ' / ' + fc.length } : {},
+      ac: acRaw ? { ...acRaw, catLabel: catLabel(acRaw.cat), pos: (acIdx + 1) + ' / ' + fc.length, multi: !!(acRaw.imgs && acRaw.imgs.length > 1), multiNote: acRaw.imgs ? acRaw.imgs.length + ' certificates — scroll down to see all of them.' : '' } : {},
       certSlots: this.certs.flatMap(c => (c.imgs || [{ id: c.id, cap: '' }]).map(im => ({ id: im.id, cap: im.cap, capDisp: im.cap ? 'block' : 'none', disp: c.id === st.cert ? 'block' : 'none' }))),
       certPrev: () => this.stepCert(-1), certNext: () => this.stepCert(1),
       recs, rec: this.recsList[st.rec],
