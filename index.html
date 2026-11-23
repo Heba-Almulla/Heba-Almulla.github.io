@@ -571,6 +571,13 @@ class Component extends DCLogic {
       if (this.state.cert && e.key === 'ArrowLeft') this.stepCert(-1);
     };
     window.addEventListener('keydown', this.onKey);
+    if (location.hostname === 'heba-almulla.github.io' && !document.querySelector('script[data-goatcounter]')) {
+      const gc = document.createElement('script');
+      gc.async = true;
+      gc.src = 'https://gc.zgo.at/count.js';
+      gc.setAttribute('data-goatcounter', 'https://heba-almulla.goatcounter.com/count');
+      document.body.appendChild(gc);
+    }
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduce && 'IntersectionObserver' in window && 'MutationObserver' in window) {
       document.documentElement.classList.add('rv-on');
