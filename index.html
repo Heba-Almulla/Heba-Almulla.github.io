@@ -121,6 +121,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
           <sc-if value="{{ p.hasShot }}" hint-placeholder-val="{{ true }}">
             <div style="position:relative;aspect-ratio:16/9;background:var(--accent-soft)">
               <image-slot id="shot-{{ p.id }}" shape="rect" fit="contain" placeholder="Project screenshot" style="width:100%;height:100%"></image-slot>
+              <sc-if value="{{ p.hasVideo }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;left:10px;top:10px;display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:11.5px;font-weight:600;line-height:1.35;pointer-events:none">▶ Demo video inside</span>
+              </sc-if>
               <sc-if value="{{ p.isSensitive }}" hint-placeholder-val="{{ false }}">
                 <span style="position:absolute;left:10px;top:10px;max-width:calc(100% - 20px);padding:4px 10px;border-radius:999px;background:oklch(0.22 0.03 260 / 0.85);color:oklch(0.98 0 0);font-size:11.5px;line-height:1.35;pointer-events:none">No screenshot · sensitive data</span>
               </sc-if>
@@ -366,6 +369,13 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
       <sc-if value="{{ ap.hasAward }}" hint-placeholder-val="{{ false }}">
         <div style="padding:14px 16px;margin-bottom:24px;border-radius:var(--r);background:var(--accent-soft);color:var(--ink);font-size:15px"><strong>First Place Winner</strong> — Data Science Department, Innovation and Entrepreneurship Forum, University of Jeddah</div>
       </sc-if>
+      <sc-if value="{{ ap.hasVideo }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-bottom:26px">
+          <div style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px">Product walkthrough</div>
+          <video src="{{ ap.video }}" poster="{{ ap.poster }}" controls playsInline preload="metadata" style="display:block;width:100%;aspect-ratio:1280/636;border-radius:var(--r);border:1px solid var(--line);background:var(--accent-soft)"></video>
+          <div style="margin-top:8px;font-size:13px;color:var(--muted)">Quick Demo → full GTM strategy → Competitive Gaps tool → Ask AuraGTM chatbot.</div>
+        </div>
+      </sc-if>
       <div style="display:grid;gap:22px">
         <div><div style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-text);margin-bottom:6px">Challenge</div><p style="margin:0;font-size:17px;line-height:1.6">{{ ap.challenge }}</p></div>
         <div><div style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px">Approach</div>
@@ -377,6 +387,9 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
         <div style="display:flex;flex-wrap:wrap;gap:6px">
           <sc-for list="{{ ap.stack }}" as="s" hint-placeholder-count="3"><span style="padding:4px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent-text);font-size:13px;font-weight:500">{{ s }}</span></sc-for>
         </div>
+        <sc-if value="{{ ap.hasLive }}" hint-placeholder-val="{{ false }}">
+          <div><a href="{{ ap.live }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600" style-hover="filter:brightness(1.08)">{{ ap.liveLabel }} ↗</a></div>
+        </sc-if>
         <sc-if value="{{ ap.hasRepo }}" hint-placeholder-val="{{ false }}">
           <div><a href="{{ ap.repo }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:var(--r);background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600" style-hover="filter:brightness(1.08)">View code on GitHub ↗</a></div>
         </sc-if>
@@ -432,7 +445,7 @@ class Component extends DCLogic {
   ];
 
   projects = [
-    { id: 'aura', f: 'ai', cat: 'Agentic AI · RAG', title: 'AuraGTM', org: 'Saudi Digital Academy', date: '05/2026 – 06/2026', role: 'Development lead',
+    { id: 'aura', f: 'ai', video: 'assets/auragtm-demo.mp4', poster: 'assets/auragtm-poster.jpg', live: 'https://auragtmai.com/', liveLabel: 'Visit AuraGTM', cat: 'Agentic AI · RAG', title: 'AuraGTM', org: 'Saudi Digital Academy', date: '05/2026 – 06/2026', role: 'Development lead',
       summary: 'An Agentic AI platform that turns product and company inputs into source-grounded go-to-market strategies.',
       challenge: 'Businesses struggle to develop effective go-to-market strategies because market insights and company knowledge are scattered across different sources, making research and planning time-consuming.',
       approach: ['Designed a multi-agent AI architecture combining Strategist and Critic agents to generate and evaluate GTM strategies.', 'Implemented a hybrid RAG pipeline using semantic search and BM25 with LangChain and ChromaDB to retrieve relevant business knowledge and ground generated recommendations.'],
@@ -629,7 +642,7 @@ class Component extends DCLogic {
     const chip = on => ({ border: on ? 'var(--accent)' : 'var(--line)', bg: on ? 'var(--accent)' : 'transparent', color: on ? 'var(--on-accent)' : 'var(--ink)' });
 
     const pFilters = [['all', 'All'], ['ai', 'AI & ML'], ['bi', 'BI & Apps'], ['de', 'Data Engineering']].map(([k, label]) => ({ label, ...chip(st.pf === k), pick: () => this.setState({ pf: k }) }));
-    const visProjects = this.projects.filter(p => st.pf === 'all' || p.f === st.pf).map(p => ({ ...p, hasRepo: !!p.repo, repo: p.repo || '', hasShot: !p.noShot, isSensitive: !!p.sensitive, hasAward: !!p.award, stack3: p.stack.slice(0, 3), open: open(p.id) }));
+    const visProjects = this.projects.filter(p => st.pf === 'all' || p.f === st.pf).map(p => ({ ...p, hasVideo: !!p.video, hasRepo: !!p.repo, repo: p.repo || '', hasShot: !p.noShot, isSensitive: !!p.sensitive, hasAward: !!p.award, stack3: p.stack.slice(0, 3), open: open(p.id) }));
     const apRaw = projById(st.active);
 
     const skGroups = this.skillCats.map(c => {
@@ -689,7 +702,7 @@ class Component extends DCLogic {
       },
       pFilters, visProjects,
       hasProject: !!apRaw,
-      ap: apRaw ? { ...apRaw, hasAward: !!apRaw.award, hasRepo: !!apRaw.repo, repo: apRaw.repo || '' } : { approach: [], stack: [] },
+      ap: apRaw ? { ...apRaw, hasAward: !!apRaw.award, hasRepo: !!apRaw.repo, repo: apRaw.repo || '', hasVideo: !!apRaw.video, video: apRaw.video || '', poster: apRaw.poster || '', hasLive: !!apRaw.live, live: apRaw.live || '', liveLabel: apRaw.liveLabel || 'Visit live site' } : { approach: [], stack: [] },
       skGroups, sk,
       journey, js,
       openObser: open('obser'),
