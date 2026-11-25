@@ -85,8 +85,8 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
       </div>
     </div>
     <div data-hero="6" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0;margin-top:clamp(48px,6vw,80px);border-top:1px solid var(--hero-line)">
-      <div style="padding:22px 20px 0 0"><div style="font-family:var(--fh);font-weight:var(--fhw);font-size:40px;line-height:1">{{ projCount }}</div><div style="font-size:14px;color:var(--hero-muted);margin-top:6px">Projects delivered</div></div>
-      <div style="padding:22px 20px 0 0"><div style="font-family:var(--fh);font-weight:var(--fhw);font-size:40px;line-height:1">2</div><div style="font-size:14px;color:var(--hero-muted);margin-top:6px">Industry experience, Emaar &amp; Savola</div></div>
+      <div style="padding:22px 20px 0 0"><div data-count="{{ projCount }}" style="font-family:var(--fh);font-weight:var(--fhw);font-size:40px;line-height:1;font-variant-numeric:tabular-nums">{{ projCount }}</div><div style="font-size:14px;color:var(--hero-muted);margin-top:6px">Projects delivered</div></div>
+      <div style="padding:22px 20px 0 0"><div data-count="2" style="font-family:var(--fh);font-weight:var(--fhw);font-size:40px;line-height:1;font-variant-numeric:tabular-nums">2</div><div style="font-size:14px;color:var(--hero-muted);margin-top:6px">Industry experience, Emaar &amp; Savola</div></div>
     </div>
   </div>
 </header>
@@ -592,6 +592,19 @@ class Component extends DCLogic {
       document.body.appendChild(gc);
     }
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) {
+      const nums = [...document.querySelectorAll('[data-count]')];
+      nums.forEach(el => { el.textContent = '0'; });
+      this.countTimer = setTimeout(() => {
+        const start = performance.now(), dur = 1400;
+        const tick = now => {
+          const t = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - t, 3);
+          nums.forEach(el => { el.textContent = String(Math.round(Number(el.getAttribute('data-count')) * e)); });
+          if (t < 1) this.countRaf = requestAnimationFrame(tick);
+        };
+        this.countRaf = requestAnimationFrame(tick);
+      }, 1000);
+    }
     if (!reduce && 'IntersectionObserver' in window && 'MutationObserver' in window) {
       document.documentElement.classList.add('rv-on');
       this.io = new IntersectionObserver(entries => {
@@ -611,6 +624,7 @@ class Component extends DCLogic {
   }
   componentWillUnmount() {
     window.removeEventListener('keydown', this.onKey);
+    clearTimeout(this.countTimer); cancelAnimationFrame(this.countRaf);
     if (this.io) this.io.disconnect();
     if (this.mo) this.mo.disconnect();
     document.documentElement.classList.remove('rv-on');
